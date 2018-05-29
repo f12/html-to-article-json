@@ -1,6 +1,6 @@
 {
   "name": "@mattersmedia/html-to-article-json",
-  "version": "1.21.0",
+  "version": "1.22.0",
   "description": "Converting HTML to article-json",
   "main": "dist/index.js",
   "scripts": {

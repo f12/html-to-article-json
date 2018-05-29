@@ -981,3 +981,29 @@ if (process.browser) {
     t.same(actual, expected);
   });
 }
+
+test('parse() vimeo', t => {
+  const input = '<iframe src="https://player.vimeo.com/video/270821275?app_id=122963" width="640" height="360" frameborder="0" title="Para&iacute;so" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'vimeo',
+    caption: [],
+    attribution: [],
+    id: '270821275'
+  }];
+  t.same(actual, expected);
+});
+
+test('parse() giphy', t => {
+  const input = '<iframe src="//giphy.com/embed/3LCWUPr3S7EmcPw3BD?html5=true" frameBorder="0" class="giphy-embed" width="300" height="169" allowFullScreen></iframe>';
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'giphy',
+    caption: [],
+    attribution: [],
+    id: '3LCWUPr3S7EmcPw3BD'
+  }];
+  t.same(actual, expected);
+});
