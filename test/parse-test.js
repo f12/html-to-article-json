@@ -1007,3 +1007,40 @@ test('parse() giphy', t => {
   }];
   t.same(actual, expected);
 });
+
+test('parse() facebook', t => {
+  const input = `<div id="fb-root"></div>n<script>(function(d, s, id) {n  var js, fjs = d.getElementsByTagName(s)[0];n  if (d.getElementById(id)) return;n  js = d.createElement(s); js.id = id;n  js.src = 'https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.0';n  fjs.parentNode.insertBefore(js, fjs);n}(document, 'script', 'facebook-jssdk'));</script><div class="fb-post" data-href="https://www.facebook.com/barackobama/photos/a.10155401589571749.1073741832.6815841748/10155872770941749?type=3" data-width="552"><blockquote cite="https://www.facebook.com/barackobama/photos/a.10155401589571749.1073741832.6815841748/10155872770941749/?type=3" class="fb-xfbml-parse-ignore"><p>Over the past few days, the first class of Obama Foundation Fellows gathered to get to know each other and share what...</p>Publicada por <a href="https://www.facebook.com/barackobama/">Barack Obama</a> en&nbsp;<a href="https://www.facebook.com/barackobama/photos/a.10155401589571749.1073741832.6815841748/10155872770941749/?type=3">Miércoles, 16 de mayo de 2018</a></blockquote></div>`;
+  const actual = parse(input);
+  const expected = [
+    {
+      type: 'block',
+      children: []
+    },
+    {
+      type: 'text',
+      content: 'n',
+      href: null,
+      italic: false,
+      bold: false,
+      mark: false,
+      markClass: null,
+      strikethrough: false
+    },
+    {
+      type: 'embed',
+      embedType: 'facebook',
+      caption: [],
+      attribution: [],
+      headline: '',
+      url: 'https://www.facebook.com/barackobama/photos/a.10155401589571749.1073741832.6815841748/10155872770941749?type=3',
+      date: 'Miércoles, 16 de mayo de 2018',
+      user: 'Barack Obama',
+      text: [{
+        content: 'Over the past few days, the first class of Obama Foundation Fellows gathered to get to know each other and share what...',
+        href: null
+      }],
+      embedAs: 'photo'
+    }
+  ];
+  t.same(actual, expected);
+});
