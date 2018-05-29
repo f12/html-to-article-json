@@ -590,11 +590,17 @@ test('parse() instagram - with caption', t => {
     embedType: 'instagram',
     caption: [],
     attribution: [],
+    date: {
+      utc: '2015-12-05T21:40:53+00:00',
+      string: 'Dec 5, 2015 at 1:40pm PST'
+    },
+    user: {
+      name: 'A photo posted by David Björklund',
+      slug: 'david_bjorklund'
+    },
     id: '-7PIhyA6J3',
-    url: 'https://www.instagram.com/p/-7PIhyA6J3/',
     text: 'Reinsta @karinn In Berlin. Feeling awesome.',
-    date: {string: 'Dec 5, 2015 at 1:40pm PST', utc: '2015-12-05T21:40:53+00:00'},
-    user: {name: 'David Björklund', slug: 'david_bjorklund'}
+    url: 'https://www.instagram.com/p/-7PIhyA6J3/'
   }];
   t.same(actual, expected);
 });
@@ -629,17 +635,17 @@ test('parse() instagram - without caption', t => {
     embedType: 'instagram',
     caption: [],
     attribution: [],
-    id: '-7PIhyA6J3',
-    url: 'https://www.instagram.com/p/-7PIhyA6J3/',
-    text: null,
     date: {
-      string: 'Dec 5, 2015 at 1:40pm PST',
-      utc: '2015-12-05T21:40:53+00:00'
+      utc: '2015-12-05T21:40:53+00:00',
+      string: 'Dec 5, 2015 at 1:40pm PST'
     },
     user: {
-      name: 'David Björklund',
+      name: 'A photo posted by David Björklund',
       slug: 'david_bjorklund'
-    }
+    },
+    id: '-7PIhyA6J3',
+    text: null,
+    url: 'https://www.instagram.com/p/-7PIhyA6J3/'
   }];
   t.same(actual, expected);
 });
